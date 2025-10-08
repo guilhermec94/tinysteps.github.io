@@ -1,0 +1,4 @@
+baseURL: https://tinysteps.github.io
+languageCode: en-us
+title: Tiny Steps
+theme: ["PaperMod"]
