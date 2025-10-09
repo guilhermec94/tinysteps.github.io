@@ -2,3 +2,69 @@ baseURL: https://tinysteps.github.io
 languageCode: en-us
 title: Tiny Steps
 theme: ["PaperMod"]
+pagination:
+  pagerSize: 10
+
+# Taxonomias
+taxonomies:
+  category: categories
+  tag: tags
+
+# Parâmetros PaperMod
+params:
+  env: production
+  description: "Taking little steps into software engineering"
+  author: "Guilherme Carvalho"
+  defaultTheme: auto # light/dark automático
+  showReadingTime: true
+  showBreadCrumbs: true
+  showPostNavLinks: true
+  showCodeCopyButtons: true
+  showShareButtons: false
+  disableThemeToggle: false
+  comments: false
+
+  mainSections: ["posts"]
+
+  assets:
+    favicon: "/favicon-32x32.png"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+    android_chrome_192: "/android-chrome-192x192.png"
+    android_chrome_512: "/android-chrome-512x512.png"
+
+  homeInfoParams:
+    Title: ""
+    Content: "Taking little steps into software engineering"
+    image: "/logo.png"
+  profileMode:
+    enabled: true
+    title: ""
+    subtitle: "Taking little steps into software engineering"
+    imageUrl: "/logo.png"
+    imageTitle: "TinySteps Logo"
+    buttons:
+      - name: "Read Posts"
+        url: "/posts/"
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/guilhermec94"
+
+# Menus principais
+menu:
+  main:
+    - name: "Home"
+      url: "/home/"
+      weight: 10
+    - name: "Posts"
+      url: "/posts/"
+      weight: 10
+    - name: "About"
+      url: "/about/"
+      weight: 10
+
+# Build
+buildDrafts: true
+enableRobotsTXT: true
