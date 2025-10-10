@@ -46,7 +46,7 @@ params:
     imageTitle: "TinySteps Logo"
     buttons:
       - name: "Read Posts"
-        url: "/posts/"
+        url: "posts/"
 
   socialIcons:
     - name: github
@@ -56,13 +56,13 @@ params:
 menu:
   main:
     - name: "Home"
-      url: "/home/"
+      url: "home/"
       weight: 10
     - name: "Posts"
-      url: "/posts/"
+      url: "posts/"
       weight: 10
     - name: "About"
-      url: "/about/"
+      url: "about/"
       weight: 10
 
 # Build
