@@ -68,3 +68,7 @@ menu:
 # Build
 buildDrafts: true
 enableRobotsTXT: true
+
+caches:
+  images:
+    dir: :cacheDir/images
