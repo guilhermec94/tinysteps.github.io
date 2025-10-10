@@ -57,13 +57,19 @@ jobs:
       - name: Debug base_url from Pages
         run: echo "Pages base_url => ${{ steps.pages.outputs.base_url }}/"
 
-      - name: Build site (force project baseURL)
+      - name: Build site (force baseURL)
         run: |
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --baseURL "https://guilhermec94.github.io/tinysteps.github.io/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
+
+      - name: Inspect built HTML (check image URLs)
+        run: |
+          grep -nE 'logo\.png|apple-touch-icon|favicon-32x32' public/index.html || true
+          echo "Public root:"
+          ls -la public | sed -n '1,200p'
 
       - name: Cache save
         uses: actions/cache/save@v4
