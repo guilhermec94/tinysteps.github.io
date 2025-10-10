@@ -15,7 +15,7 @@ params:
   env: production
   description: "Taking little steps into software engineering"
   author: "Guilherme Carvalho"
-  defaultTheme: auto # light/dark automático
+  defaultTheme: dark # light/dark
   showReadingTime: true
   showBreadCrumbs: true
   showPostNavLinks: true
