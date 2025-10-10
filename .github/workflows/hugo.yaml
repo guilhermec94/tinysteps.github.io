@@ -54,23 +54,27 @@ jobs:
           restore-keys: |
             hugo-${{ runner.os }}-
 
-      - name: Build site
+      - name: Debug base_url from Pages
+        run: echo "Pages base_url => ${{ steps.pages.outputs.base_url }}/"
+
+      - name: Build site (force project baseURL)
         run: |
           hugo \
             --gc \
             --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
 
-      - name: Cache save
-        uses: actions/cache/save@v4
-        with:
-          path: ${{ runner.temp }}/hugo_cache
-          key: hugo-${{ runner.os }}-${{ env.HUGO_VERSION }}
+            - name: Cache save
+              uses: actions/cache/save@v4
+              with:
+                path: ${{ runner.temp }}/hugo_cache
+                key: hugo-${{ runner.os }}-${{ env.HUGO_VERSION }}
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: ./public
 
   deploy:
     environment:
