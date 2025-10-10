@@ -66,9 +66,5 @@ menu:
       weight: 10
 
 # Build
-buildDrafts: true
+buildDrafts: false
 enableRobotsTXT: true
-
-caches:
-  images:
-    dir: :cacheDir/images
