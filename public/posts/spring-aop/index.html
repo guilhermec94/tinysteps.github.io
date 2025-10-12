@@ -5,9 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Spring Aop | Tiny Steps</title>
+<title>Spring AOP - A tiny introduction | Tiny Steps</title>
 <meta name="keywords" content="">
-<meta name="description" content="Spring Aop - Tiny Steps">
+<meta name="description" content="Hey there, reader! 👋
+I hope you’re feeling good today, because we’re about to dive into Spring AOP — which, at first, might not mean much.
+I first came across it at work when I was trying to use the @Transactional and @Retryable annotations in Spring, and for some reason… they just weren’t working. So — like any other responsible developer — I rushed to ChatGPT and begged it to explain why the hell those annotations, which worked flawlessly elsewhere, refused to work here.">
 <meta name="author" content="Guilherme Carvalho">
 <link rel="canonical" href="http://localhost:1313/tinysteps.github.io/posts/spring-aop/">
 <link crossorigin="anonymous" href="/tinysteps.github.io/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
@@ -29,16 +31,20 @@
     </style>
 </noscript><meta property="og:url" content="http://localhost:1313/tinysteps.github.io/posts/spring-aop/">
   <meta property="og:site_name" content="Tiny Steps">
-  <meta property="og:title" content="Spring Aop">
-  <meta property="og:description" content="Taking little steps into software engineering">
+  <meta property="og:title" content="Spring AOP - A tiny introduction">
+  <meta property="og:description" content="Hey there, reader! 👋
+I hope you’re feeling good today, because we’re about to dive into Spring AOP — which, at first, might not mean much.
+I first came across it at work when I was trying to use the @Transactional and @Retryable annotations in Spring, and for some reason… they just weren’t working. So — like any other responsible developer — I rushed to ChatGPT and begged it to explain why the hell those annotations, which worked flawlessly elsewhere, refused to work here.">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-10-08T19:28:58+01:00">
-    <meta property="article:modified_time" content="2025-10-08T19:28:58+01:00">
+    <meta property="article:published_time" content="2025-10-12T15:30:00+01:00">
+    <meta property="article:modified_time" content="2025-10-12T15:30:00+01:00">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Aop">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Spring AOP - A tiny introduction">
+<meta name="twitter:description" content="Hey there, reader! 👋
+I hope you’re feeling good today, because we’re about to dive into Spring AOP — which, at first, might not mean much.
+I first came across it at work when I was trying to use the @Transactional and @Retryable annotations in Spring, and for some reason… they just weren’t working. So — like any other responsible developer — I rushed to ChatGPT and begged it to explain why the hell those annotations, which worked flawlessly elsewhere, refused to work here.">
 
 
 <script type="application/ld+json">
@@ -55,7 +61,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Spring Aop",
+      "name": "Spring AOP - A tiny introduction",
       "item": "http://localhost:1313/tinysteps.github.io/posts/spring-aop/"
     }
   ]
@@ -65,17 +71,17 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Spring Aop",
-  "name": "Spring Aop",
-  "description": "",
+  "headline": "Spring AOP - A tiny introduction",
+  "name": "Spring AOP - A tiny introduction",
+  "description": "Hey there, reader! 👋\nI hope you’re feeling good today, because we’re about to dive into Spring AOP — which, at first, might not mean much.\nI first came across it at work when I was trying to use the @Transactional and @Retryable annotations in Spring, and for some reason… they just weren’t working. So — like any other responsible developer — I rushed to ChatGPT and begged it to explain why the hell those annotations, which worked flawlessly elsewhere, refused to work here.\n",
   "keywords": [
     
   ],
-  "articleBody": "",
-  "wordCount" : "0",
+  "articleBody": "Hey there, reader! 👋\nI hope you’re feeling good today, because we’re about to dive into Spring AOP — which, at first, might not mean much.\nI first came across it at work when I was trying to use the @Transactional and @Retryable annotations in Spring, and for some reason… they just weren’t working. So — like any other responsible developer — I rushed to ChatGPT and begged it to explain why the hell those annotations, which worked flawlessly elsewhere, refused to work here.\nAfter a friendly back-and-forth, it told me: “That’s because of how Spring AOP works.”\nAnd that was the first time I’d ever heard about AOP.\nBear in mind that the last time I’d touched Java was back in university — quite a while ago — and I didn’t have a solid Spring background when I started this job. So I’m still piecing things together.\nIf you’ve stumbled across this post, you’ve probably heard “AOP” or “Spring AOP” somewhere — maybe even from ChatGPT — while debugging something mysterious in your code.\nEither way, you’re here, I’m here, so let’s figure this out together. Because honestly, I’m learning as I write this too!\nAOP? What doest that mean and what is it? AOP. At first glance, this acronym doesn’t say much.\nYou can kind of guess that the “O” stands for Object and the “P” for Programming or Paradigm — at least that was my first guess.\nBut ChatGPT (and a great post from Baeldung cleared things up for me.\nAOP stands for Aspect-Oriented Programming.\nIt’s a programming paradigm that allows us to add new behavior to our existing code without modifying the code itself — pretty cool, right?\nYou might be thinking: can’t we already do that with SOLID principles and design patterns like the Decorator or Proxy?\nAnd yes — you’re right.\nPrinciples like the Open/Closed Principle and patterns such as Decorator or Wrapper let us extend our system by adding domain-specific behaviors while keeping things modular.\nBut AOP targets a different kind of behavior — one that cuts across layers or classes.\nIt’s meant for code that doesn’t belong to a single module but rather affects multiple parts of the system.\nThese are known as cross-cutting concerns.\nCross-cutting concerns? If you’re not yet familiar with this concept (I wasn’t either), here’s what I learned.\nCross-cutting concerns are functionalities that are needed in many places: logging, error handling, security/authorization, monitoring, and so on.\nTake logging as an example.\nWe need logs across our application — in services, processes, HTTP requests, etc.\nSince logging is needed everywhere, it “cuts across” many parts of the system.\nIf we tried to place this functionality directly inside each module (Users, Orders, Payments…), we’d quickly end up duplicating code.\nAOP gives us a way to keep our modules clean 🧹 while still applying these shared behaviors wherever they’re needed.\nLet’s see some examples - Logging Let’s imagine a simple PaymentService — nothing fancy.\nWithout AOP public class PaymentService { public void processPayment() { Logger.info(\"Starting processPayment...\"); if(!SecurityContext.hasPermission(\"PAYMENT\")) { throw new SecurityException(\"No permission!\"); } // business logic here Logger.info(\"Finished processPayment\"); } } Without AOP, if we want to log before and after our method, we have to explicitly add those lines — and we’d need to do the same across multiple services.\nWith AOP @Aspect @Component public class LoggingAspect { @Pointcut(\"execution(* com.example.service.*.*(..))\") public void serviceMethods() {} @Before(\"serviceMethods()\") public void logBefore(JoinPoint joinPoint) { System.out.println(\"\u003e\u003e\u003e Starting \" + joinPoint.getSignature().getName()); } @After(\"serviceMethods()\") public void logAfter(JoinPoint joinPoint) { System.out.println(\"\u003c\u003c\u003c Finished \" + joinPoint.getSignature().getName()); } } public class PaymentService { public void processPayment() { if(!SecurityContext.hasPermission(\"PAYMENT\")) { throw new SecurityException(\"No permission!\"); } // business logic here } } Now our PaymentService contains only business logic, while logging is automatically applied across all service methods — no duplicated code, no clutter.\nDon’t worry about that suspicious-looking LoggingAspect class — we’ll talk about it in the next section.\nCore concepts Understanding the building blocks of AOP Before diving into example code, let’s first understand what we actually need to implement this paradigm in Spring — and I must say, at first glance, these concepts are not very intuitive.\nIn Spring AOP, we work with four key components:\nAspect Join Point Advice Pointcut If you’re anything like me, looking at that list the first time probably left you thinking:\nWhat on earth is an Aspect? Advice for what? Join Point? Pointcut? Does one join things and the other cut them apart? 😅\nSo yes — these terms raised a lot of questions for me too. Maybe it’s because English isn’t my first language, or maybe it’s just because these names sound unnecessarily mysterious.\nBut after reading the official docs and, of course, asking my friend ChatGPT, I finally started to get it.\nAspect An Aspect is the module that implements a cross-cutting concern.\nIt’s basically a class where you define the code you want to execute across multiple points of your application.\nPretty simple, right? Once you understand that, most of the rest builds around it.\nJoin Point and Pointcut These two were the hardest for me to grasp.\nA Join Point, in general AOP terms, is a moment where something happens — for example:\na method call or execution, an object instantiation, a constructor call, an exception being handled, etc. However, in Spring AOP, Join Points are limited to method executions.\nAnd not just any methods — only those that belong to Spring-managed beans and are eligible for proxying.\nThat means AOP only kicks in when methods are called through Spring’s dependency injection system (more on that later).\nNow, the Pointcut defines which Join Points should trigger your cross-cutting code.\nIt’s basically a matching expression — you tell Spring, “run my cross-cutting logic for all methods that match this pattern.”\nSo:\nA Join Point is a potential point where your cross-cutting code could run. A Pointcut is a filter that decides which of those Join Points your Aspect should actually apply to. Advice Man, the naming here is wild.\nAdvice refers to what you actually want to do at those Join Points matched by a Pointcut.\nIt’s the action — the code that runs before, after, or around the target method.\nYou define it inside your Aspect class and use annotations to specify when it should execute.\nThere are several types of advice in Spring AOP:\n@Before – Runs before the join point (method execution). @After – Runs after the join point, regardless of whether it completes normally or throws an exception (like a finally block). @AfterReturning – Runs after the method returns successfully. @AfterThrowing – Runs only if the method throws an exception. @Around – The most powerful type of advice.\nIt wraps the method execution, giving you full control over: Whether the method should run at all, When it should run, What value to return, Or whether to throw an exception instead. Now PointCutting it all together Let’s take everything we’ve learned and see how it looks in a practical, visual example — a definition of a cross-cutting functionality.\n@Aspect @Component public class LoggingAspect { // ----- POINTCUT ----- @Pointcut(\"execution(* com.example.service.OrderService.*(..))\") public void orderServiceMethods() {} // ----- ADVICE (Before) ----- @Before(\"orderServiceMethods()\") public void logBefore(JoinPoint joinPoint) { System.out.println(\"\u003e\u003e\u003e Before method: \" + joinPoint.getSignature().getName()); } // ----- ADVICE (AfterReturning) ----- @AfterReturning(pointcut = \"execution(* com.example.service.OrderService.placeOrder(..))\", returning = \"result\") public void logAfterReturning(JoinPoint joinPoint, Object result) { System.out.println(\"\u003c\u003c\u003c After method: \" + joinPoint.getSignature().getName() + \" | Returned: \" + result); } } In this example, our class defines a cross-cutting functionality — so it’s an Aspect — and it’s marked with the @Aspect annotation.\nWe start with a Pointcut, defined using the @Pointcut annotation on an empty method.\nWhy an empty method? Because we need a way to name our Pointcut expression — something we can reference later — but we don’t want to execute it.\nThat empty method is never called at runtime; it simply serves as a label for the Pointcut.\nNext, we have our advices, the actual cross-cutting methods we want to run.\nThe @Before advice references the orderServiceMethods() Pointcut we just defined, telling Spring to execute logBefore() before every method in OrderService.\nPretty straightforward. The @AfterReturning advice is a bit different. It uses two attributes: pointcut, where we define a more specific expression (in this case, only the placeOrder() method). returning, which tells Spring to capture the method’s return value and inject it into the result parameter of our advice. We could have reused the same Pointcut method, but this shows how to target a specific method for finer control.\nSo when placeOrder() returns something like \"Order confirmed\", Spring passes that value into result, and our advice logs it.\nYou might be wondering: “Okay, I get what an Aspect is now. But what does this have to do with the problem you had earlier with Spring annotations?”\nWell, the connection is that those annotations — like @Transactional and @Retryable — are actually Aspects inside the Spring Framework.\nSo, to understand why they sometimes don’t behave as expected, we first need to understand how AOP and these concepts work behind the scenes.\nI got all of this, but… how are they executed? Now that we’ve learned what AOP and Spring AOP are — and the core concepts behind them — the next question that naturally pops up is:\nHow does my Aspect actually get “injected” or “triggered”?\nThe answer lies in the process called Weaving.\nIf you’re not familiar with the word weaving (I wasn’t either at first), it literally means the process of interlacing two sets of threads or yarns at right angles to create a fabric.\nUsing that metaphor, you can think of it like this:\nOne thread is your Aspect (the cross-cutting code), The other thread is your application logic (the matched methods / Join Points). When these two are interlaced, you get the final “fabric” — your complete application.\nSo, weaving is the process of linking Aspects (from Spring or from your own code) with the rest of your application logic.\nTypes of Weaving There are a few different types of weaving depending on when the Aspects are applied:\nCompile-time weaving Aspects are combined with the source code during compilation. The resulting .class files already contain the woven aspect logic. Load-time weaving (LTW) Aspects are combined when classes are being loaded by the JVM’s class loader. This happens dynamically during class loading, using a weaving agent such as AspectJ. Spring can integrate with AspectJ for this, but it’s less common in typical Spring Boot apps. Runtime weaving (proxy-based) This is what Spring AOP uses. Aspects are applied at runtime by creating proxies that wrap your beans. When a method is called, the proxy intercepts the call, executes your advice, and then delegates to the real method. Because it’s done dynamically, it doesn’t modify bytecode — it simply adds an extra layer at runtime. Understanding the issue I was having Remember the issue I mentioned at the beginning of the post?\nWell, it turns out that the culprit — besides me not fully understanding how things work — was this proxy-based approach that Spring AOP uses.\nSo let’s dive into how this proxy works and why a small detail can have a big impact on your code.\nAn AOP proxy is an object created by the AOP framework that’s responsible for applying the behavior defined in aspects — in other words, executing the advice methods associated with them.\nWhen Spring creates a bean, it checks whether any aspect targets that bean.\nIf so, instead of returning the original bean directly, Spring creates a proxy object that wraps the original bean instance.\nThis proxy is responsible for:\nIntercepting method calls made on the bean, Running all advice logic defined in aspects, Delegating the call to the actual target method afterward. Conceptually: Normal class call\nClient │ ▼ Real Bean (PaymentService) │ ▼ processPayment() Spring AOP proxy call\nClient │ ▼ AOP Proxy (created by Spring) │ ▲ │ └───── Intercepts call │ Executes all matching advices │ (e.g. @Before, @After, @Around) ▼ Real Bean (PaymentService) │ ▼ processPayment() This mechanism is what we call runtime weaving in Spring AOP — it integrates the aspect behavior dynamically through proxies, without modifying bytecode.\nAt this point, I thought: “Okay, I get it now… but why wasn’t it working?”\nWell, here’s the missing piece:\nI was using the right annotations (@Transactional, @Retryable), but I was calling those annotated methods from within the same class — from another method of that same bean.\nAnd that’s exactly where things broke.\nThe Self-Invocation Problem The Spring documentation explains that when a bean is proxied, calls must go through the proxy for AOP to work.\nIf you call a method from inside the same class (via this), the proxy isn’t involved — you’re calling the real bean directly.\nSo the aspect never has a chance to run.\nIn other words, you bypass the proxy completely.\n“…self invocation is not going to result in the advice associated with a method invocation getting a chance to run. In other words, self invocation via an explicit or implicit this reference will bypass the advice.”\n— Spring Framework Documentation\nAs a result, self-invocation will not trigger aspects such as @Transactional, @Retryable, or even your own custom aspects.\nHow to Solve It You have a few options:\nAvoid self-invocation (recommended) The approach recommended by the Spring documentation is to refactor your code so this situation doesn’t occur. In simple terms, call the annotated method from another class that has the original class injected as a dependency. This way, the call goes through the proxy. Self-injection (alternative) This consists of injecting the class into itself. That way, the injected reference passes through the proxying process, and any aspect (like @Transactional or @Retryable) is correctly applied. Example: @Component public class MyService { @Autowired private MyService self; // proxied reference public void methodA() { self.methodB(); // goes through proxy } @Transactional public void methodB() { // transactional logic } } Using AopContext.currentProxy() (last resort) As per the documentation, this approach is strongly discouraged and should only be used as a last resort solution. Example (from the official docs): public class SimplePojo implements Pojo { public void foo() { // Works, but should be avoided if possible ((Pojo) AopContext.currentProxy()).bar(); } public void bar() { // some logic... } } You can read more about proxies here.\nSee you in the next post… 👋 We finally reached the end — woof.\nI hope this post was as beneficial to you as it was for me.\nI decided to write this post for three reasons:\nI find it easier to learn new things when I have to research them and try to explain them to someone else — instead of just reading the same text over and over again until it burns into my brain. I wanted a way to document my learnings instead of relying solely on my shrinking, downgrading “internal storage device.”\nWeren’t books invented in the first place because our tiny brains couldn’t store everything we wanted — and occasionally had to “wipe out” old data to make space for new things? At work, I’ve been dealing with new kinds of problems and situations (like this one), so if I can pass along that knowledge, great — and if not, well, it still helped me learn. Maybe my way of explaining things helps someone out there. Or maybe not. But it is what it is, I guess. I already have a few more topics I’d like to cover — see you in the next one!\nReferences Spring AOP: Introduction Spring AOP: Proxies Understanding AOP Proxies Self-Injection with @Autowired Baeldung: Spring AOP Overview Baeldung: AspectJ Baeldung: Spring AOP Annotations ",
+  "wordCount" : "2615",
   "inLanguage": "en",
-  "datePublished": "2025-10-08T19:28:58+01:00",
-  "dateModified": "2025-10-08T19:28:58+01:00",
+  "datePublished": "2025-10-12T15:30:00+01:00",
+  "dateModified": "2025-10-12T15:30:00+01:00",
   "author":{
     "@type": "Person",
     "name": "Guilherme Carvalho"
@@ -156,23 +162,346 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="http://localhost:1313/tinysteps.github.io/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tinysteps.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Spring Aop
+      Spring AOP - A tiny introduction
     </h1>
-    <div class="post-meta"><span title='2025-10-08 19:28:58 +0100 WEST'>October 8, 2025</span>&nbsp;·&nbsp;<span>0 min</span>&nbsp;·&nbsp;<span>Guilherme Carvalho</span>
+    <div class="post-meta"><span title='2025-10-12 15:30:00 +0100 WEST'>October 12, 2025</span>&nbsp;·&nbsp;<span>13 min</span>&nbsp;·&nbsp;<span>Guilherme Carvalho</span>
 
 </div>
   </header> 
+  <div class="post-content"><p><strong>Hey there, reader! 👋</strong></p>
+<p>I hope you’re feeling good today, because we’re about to dive into Spring AOP — which, at first, might not mean much.</p>
+<p>I first came across it at work when I was trying to use the <em><strong>@Transactional</strong></em> and <em><strong>@Retryable</strong></em> annotations in Spring, and for some reason… they just weren’t working. So — like any other responsible developer — I rushed to ChatGPT and begged it to explain why the hell those annotations, which worked flawlessly elsewhere, refused to work here.</p>
+<p>After a friendly back-and-forth, it told me: <em>“That’s because of how Spring AOP works.”</em></p>
+<p>And that was the first time I’d ever heard about <strong>AOP</strong>.<br>
+Bear in mind that the last time I’d touched Java was back in university — quite a while ago — and I didn’t have a solid Spring background when I started this job. So I’m still piecing things together.</p>
+<p>If you’ve stumbled across this post, you’ve probably heard “AOP” or “Spring AOP” somewhere — maybe even from ChatGPT — while debugging something mysterious in your code.</p>
+<p>Either way, you’re here, I’m here, so let’s figure this out together. Because honestly, I’m learning as I write this too!</p>
+<h1 id="aop-what-doest-that-mean-and-what-is-it">AOP? What doest that mean and what is it?<a hidden class="anchor" aria-hidden="true" href="#aop-what-doest-that-mean-and-what-is-it">#</a></h1>
+<p>AOP. At first glance, this acronym doesn’t say much.<br>
+You can kind of guess that the “O” stands for <em>Object</em> and the “P” for <em>Programming</em> or <em>Paradigm</em> — at least that was my first guess.<br>
+But ChatGPT (and a great post from <a href="https://www.baeldung.com/spring-aop">Baeldung</a> cleared things up for me.</p>
+<p><strong>AOP</strong> stands for <strong>Aspect-Oriented Programming</strong>.<br>
+It’s a programming paradigm that allows us to add new behavior to our existing code <strong>without modifying the code itself</strong> — pretty cool, right?</p>
+<p>You might be thinking: <em>can’t we already do that with SOLID principles and design patterns like the Decorator or Proxy?</em><br>
+And yes — you’re right.<br>
+Principles like the <strong>Open/Closed Principle</strong> and patterns such as <strong>Decorator</strong> or <strong>Wrapper</strong> let us extend our system by adding <strong>domain-specific behaviors</strong> while keeping things modular.</p>
+<p>But <strong>AOP</strong> targets a different kind of behavior — one that <em>cuts across</em> layers or classes.<br>
+It’s meant for code that doesn’t belong to a single module but rather affects multiple parts of the system.<br>
+These are known as <strong>cross-cutting concerns</strong>.</p>
+<h2 id="cross-cutting-concerns">Cross-cutting concerns?<a hidden class="anchor" aria-hidden="true" href="#cross-cutting-concerns">#</a></h2>
+<p>If you’re not yet familiar with this concept (I wasn’t either), here’s what I learned.</p>
+<p><strong>Cross-cutting concerns</strong> are functionalities that are needed in many places: <strong>logging</strong>, <strong>error handling</strong>, <strong>security/authorization</strong>, <strong>monitoring</strong>, and so on.</p>
+<p>Take logging as an example.<br>
+We need logs across our application — in services, processes, HTTP requests, etc.<br>
+Since logging is needed <em>everywhere</em>, it “cuts across” many parts of the system.</p>
+<p>If we tried to place this functionality directly inside each module (Users, Orders, Payments…), we’d quickly end up duplicating code.<br>
+AOP gives us a way to keep our modules clean 🧹 while still applying these shared behaviors wherever they’re needed.</p>
+<h3 id="lets-see-some-examples---logging">Let&rsquo;s see some examples - Logging<a hidden class="anchor" aria-hidden="true" href="#lets-see-some-examples---logging">#</a></h3>
+<p>Let’s imagine a simple <code>PaymentService</code> — nothing fancy.</p>
+<h5 id="without-aop">Without AOP<a hidden class="anchor" aria-hidden="true" href="#without-aop">#</a></h5>
+<pre tabindex="0"><code>public class PaymentService {
+
+    public void processPayment() {
+        Logger.info(&#34;Starting processPayment...&#34;);
+        if(!SecurityContext.hasPermission(&#34;PAYMENT&#34;)) {
+            throw new SecurityException(&#34;No permission!&#34;);
+        }
+        // business logic here
+        Logger.info(&#34;Finished processPayment&#34;);
+    }
+}
+</code></pre><p>Without AOP, if we want to log before and after our method, we have to explicitly add those lines — and we’d need to do the same across multiple services.</p>
+<h5 id="with-aop">With AOP<a hidden class="anchor" aria-hidden="true" href="#with-aop">#</a></h5>
+<pre tabindex="0"><code>@Aspect
+@Component
+public class LoggingAspect {
+
+    @Pointcut(&#34;execution(* com.example.service.*.*(..))&#34;)
+    public void serviceMethods() {}
+
+    @Before(&#34;serviceMethods()&#34;)
+    public void logBefore(JoinPoint joinPoint) {
+        System.out.println(&#34;&gt;&gt;&gt; Starting &#34; + joinPoint.getSignature().getName());
+    }
+
+    @After(&#34;serviceMethods()&#34;)
+    public void logAfter(JoinPoint joinPoint) {
+        System.out.println(&#34;&lt;&lt;&lt; Finished &#34; + joinPoint.getSignature().getName());
+    }
+}
+</code></pre><pre tabindex="0"><code>public class PaymentService {
+
+    public void processPayment() {
+        if(!SecurityContext.hasPermission(&#34;PAYMENT&#34;)) {
+            throw new SecurityException(&#34;No permission!&#34;);
+        }
+        // business logic here
+    }
+}
+</code></pre><p>Now our <code>PaymentService</code> contains <strong>only business logic</strong>, while logging is automatically applied across all service methods — no duplicated code, no clutter.</p>
+<p>Don’t worry about that suspicious-looking <code>LoggingAspect</code> class — we’ll talk about it in the next section.</p>
+<h1 id="core-concepts">Core concepts<a hidden class="anchor" aria-hidden="true" href="#core-concepts">#</a></h1>
+<h3 id="understanding-the-building-blocks-of-aop">Understanding the building blocks of AOP<a hidden class="anchor" aria-hidden="true" href="#understanding-the-building-blocks-of-aop">#</a></h3>
+<p>Before diving into example code, let’s first understand <em>what</em> we actually need to implement this paradigm in Spring — and I must say, at first glance, these concepts are not very intuitive.</p>
+<p>In Spring AOP, we work with four key components:</p>
+<ul>
+<li><strong>Aspect</strong></li>
+<li><strong>Join Point</strong></li>
+<li><strong>Advice</strong></li>
+<li><strong>Pointcut</strong></li>
+</ul>
+<p>If you’re anything like me, looking at that list the first time probably left you thinking:<br>
+<em>What on earth is an Aspect? Advice for what? Join Point? Pointcut? Does one join things and the other cut them apart?</em> 😅</p>
+<p>So yes — these terms raised a lot of questions for me too. Maybe it’s because English isn’t my first language, or maybe it’s just because these names sound unnecessarily mysterious.<br>
+But after reading the official docs and, of course, asking my friend ChatGPT, I finally started to get it.</p>
+<h3 id="aspect">Aspect<a hidden class="anchor" aria-hidden="true" href="#aspect">#</a></h3>
+<p>An <strong>Aspect</strong> is the module that implements a <em>cross-cutting concern</em>.<br>
+It’s basically a class where you define the code you want to execute across multiple points of your application.<br>
+Pretty simple, right? Once you understand that, most of the rest builds around it.</p>
+<h3 id="join-point-and-pointcut">Join Point and Pointcut<a hidden class="anchor" aria-hidden="true" href="#join-point-and-pointcut">#</a></h3>
+<p>These two were the hardest for me to grasp.</p>
+<p>A <strong>Join Point</strong>, in general AOP terms, is <em>a moment where something happens</em> — for example:</p>
+<ul>
+<li>a method call or execution,</li>
+<li>an object instantiation,</li>
+<li>a constructor call,</li>
+<li>an exception being handled, etc.</li>
+</ul>
+<p>However, in <strong>Spring AOP</strong>, Join Points are <em>limited</em> to <strong>method executions</strong>.<br>
+And not just any methods — only those that belong to <strong>Spring-managed beans</strong> and are <strong>eligible for proxying</strong>.<br>
+That means AOP only kicks in when methods are called <em>through Spring’s dependency injection system</em> (more on that later).</p>
+<p>Now, the <strong>Pointcut</strong> defines <em>which</em> Join Points should trigger your cross-cutting code.<br>
+It’s basically a matching expression — you tell Spring, <em>“run my cross-cutting logic for all methods that match this pattern.”</em></p>
+<p>So:</p>
+<ul>
+<li>A <strong>Join Point</strong> is a potential point where your cross-cutting code <em>could</em> run.</li>
+<li>A <strong>Pointcut</strong> is a filter that decides <em>which</em> of those Join Points your Aspect should actually apply to.</li>
+</ul>
+<h3 id="advice">Advice<a hidden class="anchor" aria-hidden="true" href="#advice">#</a></h3>
+<p>Man, the naming here is wild.</p>
+<p><strong>Advice</strong> refers to <em>what</em> you actually want to do <em>at</em> those Join Points matched by a Pointcut.<br>
+It’s the <strong>action</strong> — the code that runs before, after, or around the target method.<br>
+You define it inside your Aspect class and use annotations to specify <em>when</em> it should execute.</p>
+<p>There are several types of advice in Spring AOP:</p>
+<ul>
+<li><strong><code>@Before</code></strong> – Runs <strong>before</strong> the join point (method execution).</li>
+<li><strong><code>@After</code></strong> – Runs <strong>after</strong> the join point, <strong>regardless</strong> of whether it completes normally or throws an exception (like a <code>finally</code> block).</li>
+<li><strong><code>@AfterReturning</code></strong> – Runs <strong>after</strong> the method <strong>returns successfully</strong>.</li>
+<li><strong><code>@AfterThrowing</code></strong> – Runs <strong>only if</strong> the method <strong>throws an exception</strong>.</li>
+<li><strong><code>@Around</code></strong> – The <strong>most powerful</strong> type of advice.<br>
+It <em>wraps</em> the method execution, giving you full control over:
+<ul>
+<li>Whether the method should run at all,</li>
+<li>When it should run,</li>
+<li>What value to return,</li>
+<li>Or whether to throw an exception instead.</li>
+</ul>
+</li>
+</ul>
+<h1 id="now-pointcutting-it-all-together">Now <em>PointCutting</em> it all together<a hidden class="anchor" aria-hidden="true" href="#now-pointcutting-it-all-together">#</a></h1>
+<p>Let’s take everything we’ve learned and see how it looks in a practical, visual example — a definition of a cross-cutting functionality.</p>
+<pre tabindex="0"><code>@Aspect
+@Component
+public class LoggingAspect {
+
+    // ----- POINTCUT -----
+    @Pointcut(&#34;execution(* com.example.service.OrderService.*(..))&#34;)
+    public void orderServiceMethods() {} 
+
+    // ----- ADVICE (Before) -----
+    @Before(&#34;orderServiceMethods()&#34;)
+    public void logBefore(JoinPoint joinPoint) {
+        System.out.println(&#34;&gt;&gt;&gt; Before method: &#34; + joinPoint.getSignature().getName());
+    }
+
+    // ----- ADVICE (AfterReturning) -----
+    @AfterReturning(pointcut = &#34;execution(* com.example.service.OrderService.placeOrder(..))&#34;, returning = &#34;result&#34;)
+    public void logAfterReturning(JoinPoint joinPoint, Object result) {
+        System.out.println(&#34;&lt;&lt;&lt; After method: &#34; + joinPoint.getSignature().getName() + &#34; | Returned: &#34; + result);
+    }
+}
+</code></pre><p>In this example, our class defines a cross-cutting functionality — so it’s an <strong>Aspect</strong> — and it’s marked with the <code>@Aspect</code> annotation.</p>
+<p>We start with a <strong>Pointcut</strong>, defined using the <code>@Pointcut</code> annotation on an empty method.<br>
+Why an empty method? Because we need a way to <em>name</em> our Pointcut expression — something we can reference later — but we don’t want to execute it.<br>
+That empty method is never called at runtime; it simply serves as a label for the Pointcut.</p>
+<p>Next, we have our <strong>advices</strong>, the actual cross-cutting methods we want to run.</p>
+<ul>
+<li>The <code>@Before</code> advice references the <code>orderServiceMethods()</code> Pointcut we just defined, telling Spring to execute <code>logBefore()</code> <strong>before every method</strong> in <code>OrderService</code>.<br>
+Pretty straightforward.</li>
+<li>The <code>@AfterReturning</code> advice is a bit different. It uses two attributes:
+<ul>
+<li><strong><code>pointcut</code></strong>, where we define a <em>more specific expression</em> (in this case, only the <code>placeOrder()</code> method).</li>
+<li><strong><code>returning</code></strong>, which tells Spring to capture the method’s return value and inject it into the <code>result</code> parameter of our advice.</li>
+</ul>
+</li>
+</ul>
+<p>We could have reused the same Pointcut method, but this shows how to target a specific method for finer control.</p>
+<p>So when <code>placeOrder()</code> returns something like <code>&quot;Order confirmed&quot;</code>, Spring passes that value into <code>result</code>, and our advice logs it.</p>
+<p>You might be wondering: <em>“Okay, I get what an Aspect is now. But what does this have to do with the problem you had earlier with Spring annotations?”</em></p>
+<p>Well, the connection is that those annotations — like <code>@Transactional</code> and <code>@Retryable</code> — are actually <strong>Aspects inside the Spring Framework</strong>.<br>
+So, to understand why they sometimes don’t behave as expected, we first need to understand how AOP and these concepts work behind the scenes.</p>
+<h1 id="i-got-all-of-this-but-how-are-they-executed">I got all of this, but… how are they executed?<a hidden class="anchor" aria-hidden="true" href="#i-got-all-of-this-but-how-are-they-executed">#</a></h1>
+<p>Now that we’ve learned what AOP and Spring AOP are — and the core concepts behind them — the next question that naturally pops up is:<br>
+<em>How does my Aspect actually get “injected” or “triggered”?</em></p>
+<p>The answer lies in the process called <strong>Weaving</strong>.</p>
+<p>If you’re not familiar with the word <em>weaving</em> (I wasn’t either at first), it literally means <em>the process of interlacing two sets of threads or yarns at right angles to create a fabric.</em></p>
+<p>Using that metaphor, you can think of it like this:</p>
+<ul>
+<li>One thread is your <strong>Aspect</strong> (the cross-cutting code),</li>
+<li>The other thread is your <strong>application logic</strong> (the matched methods / Join Points).</li>
+</ul>
+<p>When these two are interlaced, you get the final “fabric” — your complete application.<br>
+So, <strong>weaving</strong> is the process of linking Aspects (from Spring or from your own code) with the rest of your application logic.</p>
+<h3 id="types-of-weaving">Types of Weaving<a hidden class="anchor" aria-hidden="true" href="#types-of-weaving">#</a></h3>
+<p>There are a few different types of weaving depending on <em>when</em> the Aspects are applied:</p>
+<h4 id="compile-time-weaving"><strong>Compile-time weaving</strong><a hidden class="anchor" aria-hidden="true" href="#compile-time-weaving">#</a></h4>
+<ul>
+<li>Aspects are combined with the source code <strong>during compilation</strong>.</li>
+<li>The resulting <code>.class</code> files already contain the woven aspect logic.</li>
+</ul>
+<h4 id="load-time-weaving-ltw"><strong>Load-time weaving (LTW)</strong><a hidden class="anchor" aria-hidden="true" href="#load-time-weaving-ltw">#</a></h4>
+<ul>
+<li>Aspects are combined <strong>when classes are being loaded by the JVM’s class loader.</strong></li>
+<li>This happens dynamically during class loading, using a <em>weaving agent</em> such as <strong>AspectJ</strong>.</li>
+<li>Spring can integrate with AspectJ for this, but it’s less common in typical Spring Boot apps.</li>
+</ul>
+<h4 id="runtime-weaving-proxy-based"><strong>Runtime weaving (proxy-based)</strong><a hidden class="anchor" aria-hidden="true" href="#runtime-weaving-proxy-based">#</a></h4>
+<ul>
+<li>This is what <strong>Spring AOP</strong> uses.</li>
+<li>Aspects are applied <strong>at runtime</strong> by creating <strong>proxies</strong> that wrap your beans.</li>
+<li>When a method is called, the proxy intercepts the call, executes your advice, and then delegates to the real method.</li>
+<li>Because it’s done dynamically, <strong>it doesn’t modify bytecode</strong> — it simply adds an extra layer at runtime.</li>
+</ul>
+<h1 id="understanding-the-issue-i-was-having">Understanding the issue I was having<a hidden class="anchor" aria-hidden="true" href="#understanding-the-issue-i-was-having">#</a></h1>
+<p>Remember the issue I mentioned at the beginning of the post?<br>
+Well, it turns out that the culprit — besides me not fully understanding how things work — was this <strong>proxy-based approach</strong> that Spring AOP uses.<br>
+So let’s dive into how this proxy works and why a small detail can have a <em>big</em> impact on your code.</p>
+<p>An <strong>AOP proxy</strong> is an object created by the AOP framework that’s responsible for applying the behavior defined in aspects — in other words, executing the <strong>advice</strong> methods associated with them.</p>
+<p>When Spring creates a bean, it checks whether any aspect targets that bean.<br>
+If so, instead of returning the original bean directly, Spring creates a <strong>proxy object</strong> that wraps the original bean instance.</p>
+<p>This proxy is responsible for:</p>
+<ul>
+<li><strong>Intercepting</strong> method calls made on the bean,</li>
+<li><strong>Running</strong> all advice logic defined in aspects,</li>
+<li><strong>Delegating</strong> the call to the actual target method afterward.</li>
+</ul>
+<p>Conceptually:
+<strong>Normal class call</strong></p>
+<pre tabindex="0"><code>Client
+   │
+   ▼
+Real Bean (PaymentService)
+   │
+   ▼
+processPayment()
+</code></pre><p><strong>Spring AOP proxy call</strong></p>
+<pre tabindex="0"><code>Client
+   │
+   ▼
+AOP Proxy (created by Spring)
+   │   ▲
+   │   └───── Intercepts call
+   │          Executes all matching advices
+   │          (e.g. @Before, @After, @Around)
+   ▼
+Real Bean (PaymentService)
+   │
+   ▼
+processPayment()
+</code></pre><p>This mechanism is what we call <strong>runtime weaving</strong> in Spring AOP — it integrates the aspect behavior dynamically through proxies, without modifying bytecode.</p>
+<p>At this point, I thought: <em>“Okay, I get it now… but why wasn’t it working?”</em></p>
+<p>Well, here’s the missing piece:<br>
+I was using the right annotations (<code>@Transactional</code>, <code>@Retryable</code>), but I was calling those annotated methods <strong>from within the same class</strong> — from another method of that same bean.</p>
+<p>And that’s exactly where things broke.</p>
+<h3 id="the-self-invocation-problem">The Self-Invocation Problem<a hidden class="anchor" aria-hidden="true" href="#the-self-invocation-problem">#</a></h3>
+<p>The Spring documentation explains that when a bean is proxied, <strong>calls must go through the proxy</strong> for AOP to work.<br>
+If you call a method from inside the same class (via <code>this</code>), the proxy isn’t involved — you’re calling the real bean directly.</p>
+<p>So the aspect never has a chance to run.<br>
+In other words, you <em>bypass</em> the proxy completely.</p>
+<blockquote>
+<p><em>“&hellip;self invocation is not going to result in the advice associated with a method invocation getting a chance to run. In other words, self invocation via an explicit or implicit <code>this</code> reference will bypass the advice.”</em><br>
+— <em>Spring Framework Documentation</em></p></blockquote>
+<p>As a result, self-invocation will <strong>not trigger</strong> aspects such as <code>@Transactional</code>, <code>@Retryable</code>, or even your own custom aspects.</p>
+<h3 id="how-to-solve-it">How to Solve It<a hidden class="anchor" aria-hidden="true" href="#how-to-solve-it">#</a></h3>
+<p>You have a few options:</p>
+<ol>
+<li><strong>Avoid self-invocation (recommended)</strong>
+<ul>
+<li>The approach recommended by the Spring documentation is to <strong>refactor your code</strong> so this situation doesn’t occur.</li>
+<li>In simple terms, call the annotated method from <em>another class</em> that has the original class injected as a dependency.  This way, the call goes through the proxy.</li>
+</ul>
+</li>
+<li><strong>Self-injection (alternative)</strong>
+<ul>
+<li>This consists of injecting the class into itself.</li>
+<li>That way, the injected reference passes through the proxying process, and any aspect (like <code>@Transactional</code> or <code>@Retryable</code>) is correctly applied.</li>
+<li>Example:</li>
+</ul>
+<pre tabindex="0"><code>  @Component
+	public class MyService {
+
+	    @Autowired
+	    private MyService self; // proxied reference
+
+	    public void methodA() {
+	        self.methodB(); // goes through proxy
+	    }
+
+	    @Transactional
+	    public void methodB() {
+	        // transactional logic
+	    }
+    }
+</code></pre></li>
+<li><strong>Using <code>AopContext.currentProxy()</code> (last resort)</strong>
+<ul>
+<li>As per the documentation, this approach is <strong>strongly discouraged</strong> and should only be used as a <em>last resort</em> solution.</li>
+<li>Example (from the official docs):
+<pre tabindex="0"><code>public class SimplePojo implements Pojo {
+
+  public void foo() {
+  // Works, but should be avoided if possible
+  ((Pojo) AopContext.currentProxy()).bar();
+      }
+
+      public void bar() {
+          // some logic...
+      }
+  }
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<p>You can read more about proxies <a href="https://docs.spring.io/spring-framework/reference/core/aop/proxying.html#aop-understanding-aop-proxies">here</a>.</p>
+<h1 id="see-you-in-the-next-post-">See you in the next post&hellip; 👋<a hidden class="anchor" aria-hidden="true" href="#see-you-in-the-next-post-">#</a></h1>
+<p>We finally reached the end — woof.</p>
+<p>I hope this post was as beneficial to you as it was for me.</p>
+<p>I decided to write this post for three reasons:</p>
+<ul>
+<li>I find it easier to learn new things when I have to research them and try to explain them to someone else — instead of just reading the same text over and over again until it burns into my brain.</li>
+<li>I wanted a way to document my learnings instead of relying solely on my shrinking, downgrading “internal storage device.”<br>
+<em>Weren’t books invented in the first place because our tiny brains couldn’t store everything we wanted — and occasionally had to “wipe out” old data to make space for new things?</em></li>
+<li>At work, I’ve been dealing with new kinds of problems and situations (like this one), so if I can pass along that knowledge, great — and if not, well, it still helped me learn.</li>
+<li>Maybe my way of explaining things helps someone out there. Or maybe not. But it is what it is, I guess.</li>
+</ul>
+<p>I already have a few more topics I’d like to cover — see you in the next one!</p>
+<h3 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h3>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/reference/core/aop/introduction-defn.html">Spring AOP: Introduction</a></li>
+<li><a href="https://docs.spring.io/spring-framework/reference/core/aop/introduction-proxies.html">Spring AOP: Proxies</a></li>
+<li><a href="https://docs.spring.io/spring-framework/reference/core/aop/proxying.html#aop-understanding-aop-proxies">Understanding AOP Proxies</a></li>
+<li><a href="https://docs.spring.io/spring-framework/reference/core/beans/annotation-config/autowired.html#beans-autowired-annotation-self-injection">Self-Injection with <code>@Autowired</code></a></li>
+<li><a href="https://www.baeldung.com/spring-aop">Baeldung: Spring AOP Overview</a></li>
+<li><a href="https://www.baeldung.com/aspectj">Baeldung: AspectJ</a></li>
+<li><a href="https://www.baeldung.com/spring-aop-annotation">Baeldung: Spring AOP Annotations</a></li>
+</ul>
+
+
+  </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
     </ul>
-<nav class="paginav">
-  <a class="next" href="http://localhost:1313/tinysteps.github.io/posts/solid-principles/">
-    <span class="title">Next »</span>
-    <br>
-    <span>SOLID: Single Responsibility in practice</span>
-  </a>
-</nav>
 
   </footer>
 </article>

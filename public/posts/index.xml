@@ -6,21 +6,16 @@
     <description>Recent content in Posts on Tiny Steps</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Oct 2025 19:28:58 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 12 Oct 2025 15:30:00 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tinysteps.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Spring Aop</title>
+      <title>Spring AOP - A tiny introduction</title>
       <link>http://localhost:1313/tinysteps.github.io/posts/spring-aop/</link>
-      <pubDate>Wed, 08 Oct 2025 19:28:58 +0100</pubDate>
+      <pubDate>Sun, 12 Oct 2025 15:30:00 +0100</pubDate>
       <guid>http://localhost:1313/tinysteps.github.io/posts/spring-aop/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SOLID: Single Responsibility in practice</title>
-      <link>http://localhost:1313/tinysteps.github.io/posts/solid-principles/</link>
-      <pubDate>Wed, 08 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tinysteps.github.io/posts/solid-principles/</guid>
-      <description>&lt;p&gt;Your content here…&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;Hey there, reader! 👋&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I hope you’re feeling good today, because we’re about to dive into Spring AOP — which, at first, might not mean much.&lt;/p&gt;
+&lt;p&gt;I first came across it at work when I was trying to use the &lt;em&gt;&lt;strong&gt;@Transactional&lt;/strong&gt;&lt;/em&gt; and &lt;em&gt;&lt;strong&gt;@Retryable&lt;/strong&gt;&lt;/em&gt; annotations in Spring, and for some reason… they just weren’t working. So — like any other responsible developer — I rushed to ChatGPT and begged it to explain why the hell those annotations, which worked flawlessly elsewhere, refused to work here.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
