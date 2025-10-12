@@ -27,22 +27,20 @@ params:
   mainSections: ["posts"]
 
   assets:
-    favicon: "favicon-32x32.png"
-    favicon16x16: "favicon-16x16.png"
+    favicon: "favicon.ico"
     favicon32x32: "favicon-32x32.png"
+    favicon96x96: "favicon-96x96.png"
     apple_touch_icon: "apple-touch-icon.png"
-    android_chrome_192: "android-chrome-192x192.png"
-    android_chrome_512: "android-chrome-512x512.png"
 
   homeInfoParams:
     Title: ""
     Content: "Taking little steps into software engineering"
-    image: "logo.png"
+    image: "t-logo.png"
   profileMode:
     enabled: true
     title: ""
     subtitle: "Taking little steps into software engineering"
-    imageUrl: "logo.png"
+    imageUrl: "t-logo.png"
     imageTitle: "TinySteps Logo"
     buttons:
       - name: "Read Posts"
