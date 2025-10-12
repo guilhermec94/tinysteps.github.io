@@ -21,7 +21,7 @@ Either way, you’re here, I’m here, so let’s figure this out together. Beca
 
 AOP. At first glance, this acronym doesn’t say much.  
 You can kind of guess that the “O” stands for _Object_ and the “P” for _Programming_ or _Paradigm_ — at least that was my first guess.  
-But ChatGPT (and a great post from [Baeldung](https://www.baeldung.com/spring-aop) cleared things up for me.
+But ChatGPT (and a great post from [Baeldung](https://www.baeldung.com/spring-aop)) cleared things up for me.
 
 **AOP** stands for **Aspect-Oriented Programming**.  
 It’s a programming paradigm that allows us to add new behavior to our existing code **without modifying the code itself** — pretty cool, right?
