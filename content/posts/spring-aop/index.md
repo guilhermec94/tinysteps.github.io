@@ -35,7 +35,7 @@ It’s meant for code that doesn’t belong to a single module but rather affect
 These are known as **cross-cutting concerns**.
 ## Cross-cutting concerns?
 
-If you’re not yet familiar with this concept (had very little experience with it too), here’s what I learned.
+If you’re not yet familiar with this concept (I had very little experience with it too), here’s what I learned.
 
 **Cross-cutting concerns** are functionalities that are needed in many places: **logging**, **error handling**, **security/authorization**, **monitoring**, and so on.
 
