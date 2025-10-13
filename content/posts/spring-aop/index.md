@@ -2,6 +2,7 @@
 date: "2025-10-12T15:30:00+01:00"
 draft: false
 title: "Spring AOP - A tiny introduction"
+tags: ["Spring AOP", "AOP"]
 ---
 **Hey there, reader! 👋**
 

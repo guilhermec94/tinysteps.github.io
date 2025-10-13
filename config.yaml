@@ -21,6 +21,7 @@ params:
   showPostNavLinks: true
   showCodeCopyButtons: true
   showShareButtons: false
+  showPostCategories: true
   disableThemeToggle: false
   comments: false
 
@@ -43,7 +44,7 @@ params:
     imageUrl: "t-logo.png"
     imageTitle: "TinySteps Logo"
     buttons:
-      - name: "Read Posts"
+      - name: "Read the posts"
         url: "posts/"
 
   socialIcons:
