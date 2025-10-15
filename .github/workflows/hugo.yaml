@@ -62,7 +62,7 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "https://guilhermec94.github.io/tinysteps.github.io/" \
+            --baseURL "https://guilhermec94.github.io/tinysteps/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
 
       - name: Inspect built HTML (check image URLs)
