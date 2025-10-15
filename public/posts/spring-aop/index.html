@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=56062&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/tinysteps/livereload.js?mindelay=10&amp;v=2&amp;port=56062&amp;path=tinysteps/livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,16 +11,16 @@
 I hope you’re feeling good today, because we’re about to dive into Spring AOP — which, at first, might not mean much.
 I first came across it at work when I was trying to use the @Transactional and @Retryable annotations in Spring, and for some reason… they just weren’t working. So — like any other responsible developer — I rushed to ChatGPT and begged it to explain why the hell those annotations, which worked flawlessly elsewhere, refused to work here.">
 <meta name="author" content="Guilherme Carvalho">
-<link rel="canonical" href="http://localhost:56062/posts/spring-aop/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:56062/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:56062/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:56062/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:56062/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:56062/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:56062/tinysteps/posts/spring-aop/">
+<link crossorigin="anonymous" href="/tinysteps/assets/css/stylesheet.a090830a421002426baafbd314e38f149d77b4c48a12ee9312700d770b27fb26.css" integrity="sha256-oJCDCkIQAkJrqvvTFOOPFJ13tMSKEu6TEnANdwsn&#43;yY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:56062/tinysteps/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:56062/tinysteps/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:56062/tinysteps/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:56062/tinysteps/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:56062/tinysteps/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:56062/posts/spring-aop/">
+<link rel="alternate" hreflang="en" href="http://localhost:56062/tinysteps/posts/spring-aop/">
 <noscript>
     <style>
         #theme-toggle,
@@ -29,7 +29,7 @@ I first came across it at work when I was trying to use the @Transactional and @
         }
 
     </style>
-</noscript><meta property="og:url" content="http://localhost:56062/posts/spring-aop/">
+</noscript><meta property="og:url" content="http://localhost:56062/tinysteps/posts/spring-aop/">
   <meta property="og:site_name" content="Tiny Steps">
   <meta property="og:title" content="Spring AOP - A tiny introduction">
   <meta property="og:description" content="Hey there, reader! 👋
@@ -58,13 +58,13 @@ I first came across it at work when I was trying to use the @Transactional and @
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:56062/posts/"
+      "item": "http://localhost:56062/tinysteps/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Spring AOP - A tiny introduction",
-      "item": "http://localhost:56062/posts/spring-aop/"
+      "item": "http://localhost:56062/tinysteps/posts/spring-aop/"
     }
   ]
 }
@@ -90,14 +90,14 @@ I first came across it at work when I was trying to use the @Transactional and @
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:56062/posts/spring-aop/"
+    "@id": "http://localhost:56062/tinysteps/posts/spring-aop/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Tiny Steps",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:56062/favicon.ico"
+      "url": "http://localhost:56062/tinysteps/favicon.ico"
     }
   }
 }
@@ -115,7 +115,7 @@ I first came across it at work when I was trying to use the @Transactional and @
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:56062/" accesskey="h" title="Tiny Steps (Alt + H)">Tiny Steps</a>
+            <a href="http://localhost:56062/tinysteps/" accesskey="h" title="Tiny Steps (Alt + H)">Tiny Steps</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -141,7 +141,7 @@ I first came across it at work when I was trying to use the @Transactional and @
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:56062/posts/" title="Posts">
+                <a href="http://localhost:56062/tinysteps/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
@@ -152,7 +152,7 @@ I first came across it at work when I was trying to use the @Transactional and @
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:56062/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:56062/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:56062/tinysteps/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:56062/tinysteps/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Spring AOP - A tiny introduction
     </h1>
@@ -493,8 +493,8 @@ In other words, you <em>bypass</em> the proxy completely.</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:56062/tags/spring-aop/">Spring AOP</a></li>
-      <li><a href="http://localhost:56062/tags/aop/">AOP</a></li>
+      <li><a href="http://localhost:56062/tinysteps/tags/spring-aop/">Spring AOP</a></li>
+      <li><a href="http://localhost:56062/tinysteps/tags/aop/">AOP</a></li>
     </ul>
 
   </footer>
@@ -502,7 +502,7 @@ In other words, you <em>bypass</em> the proxy completely.</p>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:56062/">Tiny Steps</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:56062/tinysteps/">Tiny Steps</a></span> · 
 
     <span>
         Powered by
